@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+
+    <!-- Scoreboard Section -->
+    <div class="scoreboard">
+        <h2>Current Score</h2>
+        <!-- Player and Computer scores are dynamically updated here -->
+        <p>Player: <span id="player-score">0</span></p>
+        <p>Computer: <span id="computer-score">0</span></p>
+    </div>
+
+    <!-- Choices Section -->
+    <div class="choices">
+        <!-- Buttons for player to choose Rock, Paper, or Scissors -->
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+
+    <!-- Result Section -->
+    <div class="result">
+        <!-- Message displaying the result of the game -->
+        <p id="result-message"></p>
+        <p>Computer chose: <span id="computer-choice"></span></p>
+        <!-- Table to display the game history -->
+        <table id="history-table">
+    <!-- Table rows will be dynamically inserted here -->
+        </table>
+    </div>
+
+    <!-- JavaScript file that handles the game logic -->
+    <script src="script.js"></script> 
+</body>
+</html>

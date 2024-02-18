@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light background for contrast */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;  /* Full viewport height */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333; /* Dark text for contrast */
+    margin-bottom: 20px;
+}
+
+.scoreboard, .choices, .result {
+    margin-bottom: 20px;
+    width: 100%; /* Full width containers */
+    max-width: 600px; /* Max width for larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background: white; /* White background for scoreboard and result */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+}
+
+.scoreboard {
+    text-align: center;
+}
+
+.choices button {
+    background-color: #4CAF50; /* Green buttons */
+    color: white;
+    padding: 12px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.1s; /* Smooth transition for hover effect */
+}
+
+.choices button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight raise effect on hover */
+}
+
+.choices button:active {
+    transform: translateY(1px); /* Slight press effect on click */
+}
+
+.result {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; /* Dark text for readability */
+    text-align: center;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .choices button {
+        margin: 10px 5px; /* Less margin on smaller screens */
+    }
+}
