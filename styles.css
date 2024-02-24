@@ -57,6 +57,22 @@ h1 {
     text-align: center;
 }
 
+#new-set {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the text */
+    margin: 20px 0; /* Margin around the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth background color transition on hover */
+}
+
+#new-set:hover {
+    background-color: #45a049; /* Darker green background on hover */
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 600px) {
     .choices button {

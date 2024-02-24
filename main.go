@@ -45,6 +45,22 @@ func generateComputerChoice() string {
 	return choices[randomIndex]
 }
 
+// Reset the scores
+func resetScores(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Reset the scores
+	playerScore = 0
+	computerScore = 0
+
+	// Respond with a success message
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{"message": "Scores reset successfully"})
+}
+
 func determineWinner(playerChoice, computerChoice string) (string, string) {
 	// Messages for different game outcomes
 	tieMessages := []string{
@@ -141,6 +157,7 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 
 	http.Handle("/rps", enableCORS(http.HandlerFunc(handleRPSMove)))
+	http.Handle("/reset", enableCORS(http.HandlerFunc(resetScores))) // Register the reset endpoint
 	fmt.Println("Rock Paper Scissors server starting on port 8080")
 	http.ListenAndServe(":8080", nil)
 }
