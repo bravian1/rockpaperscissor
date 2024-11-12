@@ -4,41 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css"> 
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
+    <div class="game-container">
+        <h1>Rock Paper Scissors</h1>
 
-    <!-- Scoreboard Section -->
-    <div class="scoreboard">
-        <h2>Current Score</h2>
-        <!-- Player and Computer scores are dynamically updated here -->
-        <p>Player: <span id="player-score">0</span></p>
-        <p>Computer: <span id="computer-score">0</span></p>
-    </div>
+        <div class="scoreboard">
+            <div class="score-box player">
+                <i class="fas fa-user"></i>
+                <h2>Player</h2>
+                <span id="player-score">0</span>
+            </div>
+            <div class="score-divider">VS</div>
+            <div class="score-box computer">
+                <i class="fas fa-robot"></i>
+                <h2>Computer</h2>
+                <span id="computer-score">0</span>
+            </div>
+        </div>
 
-    <!-- Choices Section -->
-    <div class="choices">
-        <!-- Buttons for player to choose Rock, Paper, or Scissors -->
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
-    </div>
+        <div class="game-status">
+            <p id="result-message"></p>
+            <p class="computer-choice">Computer chose: <span id="computer-choice"></span></p>
+        </div>
 
-    <!-- Result Section -->
-    <div class="result">
-        <!-- Message displaying the result of the game -->
-        <p id="result-message"></p>
-        <p>Computer chose: <span id="computer-choice"></span></p>
-        <!-- Table to display the game history -->
-        <table id="history-table">
-    <!-- Table rows will be dynamically inserted here -->
-        </table>
-        <!-- Add a button to start a new set -->
-<button id="new-set">Start New Set</button>
+        <div class="choices">
+            <button id="rock" class="choice-btn">
+                <i class="fas fa-hand-rock"></i>
+                <span>Rock</span>
+            </button>
+            <button id="paper" class="choice-btn">
+                <i class="fas fa-hand-paper"></i>
+                <span>Paper</span>
+            </button>
+            <button id="scissors" class="choice-btn">
+                <i class="fas fa-hand-scissors"></i>
+                <span>Scissors</span>
+            </button>
+        </div>
+
+        <button id="new-set" class="new-set-btn">
+            <i class="fas fa-redo"></i> Start New Set
+        </button>
+
+        <div class="history-container">
+            <h2>Game History</h2>
+            <div class="history-wrapper">
+                <table id="history-table">
+                </table>
+            </div>
+        </div>
     </div>
     
-    <!-- JavaScript file that handles the game logic -->
-    <script src="script.js"></script> 
+    <script src="/static/script.js"></script> 
 </body>
 </html>
