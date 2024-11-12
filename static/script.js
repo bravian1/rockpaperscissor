@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to reset scores on the server
     function resetServerScores() {
-        fetch('http://localhost:8080/reset', {
+        fetch('/reset', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -44,12 +44,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to update the game history table
     function updateHistoryTable() {
         historyTable.innerHTML = ''; // Clear the table
+
+        // Add the table header
+        const headerRow = historyTable.insertRow(0);
+        headerRow.innerHTML = `
+            <th>Game</th>
+            <th>Player</th>
+            <th>Computer</th>
+        `;
+
+        // Add game history rows
         gameHistory.forEach((result, index) => {
-            const row = historyTable.insertRow(index);
+            const row = historyTable.insertRow(index + 1);
             const cell1 = row.insertCell(0);
             const cell2 = row.insertCell(1);
             const cell3 = row.insertCell(2);
-            cell1.textContent = `Game ${index + 1}`;
+            cell1.textContent = `${index + 1}`;
             cell2.textContent = result.playerChoice;
             cell3.textContent = result.computerChoice;
         });
@@ -79,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Helper function to send player's move to the Go server
     function sendMoveToServer(move) {
-        fetch('http://localhost:8080/rps', {
+        fetch('/rps', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
