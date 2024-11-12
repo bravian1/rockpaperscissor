@@ -13,7 +13,7 @@ type GameResult struct {
 	PlayerScore    int    `json:"playerScore"`
 	ComputerScore  int    `json:"computerScore"`
 	Message        string `json:"message"`
-	ComputerChoice string `json:"computerChoice"` // Field to hold the computer's choice
+	ComputerChoice string `json:"computerChoice"` 
 }
 
 // Declare the playerScore and computerScore variables as global
@@ -73,6 +73,8 @@ func determineWinner(playerChoice, computerChoice string) (string, string) {
 		"You win! You have bested the computer with your skills.",
 		"The computer is no match for you. You rock!",
 		"You have defeated the computer. Congratulations!",
+		"Human won! You have surpassed the computer's capabilities.",
+		"Wow! You won! I guess we are still safe from AI takeover.",
 	}
 
 	computerWinMessages := []string{
@@ -137,14 +139,14 @@ func handleRPSMove(w http.ResponseWriter, r *http.Request) {
 
 	// Game logic
 	computerChoice := generateComputerChoice()
-	message, _ := determineWinner(playerMove, computerChoice) // Ignore the returned computerChoice
+	message, _ := determineWinner(playerMove, computerChoice) 
 
 	// Create game result response
 	gameResult := GameResult{
 		PlayerScore:    playerScore,
 		ComputerScore:  computerScore,
 		Message:        message,
-		ComputerChoice: computerChoice, // Include the computer's choice here
+		ComputerChoice: computerChoice, 
 	}
 
 	// Encode as JSON and send response
@@ -153,11 +155,22 @@ func handleRPSMove(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// Seed the random number generator once at the beginning
 	rand.Seed(time.Now().UnixNano())
 
 	http.Handle("/rps", enableCORS(http.HandlerFunc(handleRPSMove)))
-	http.Handle("/reset", enableCORS(http.HandlerFunc(resetScores))) // Register the reset endpoint
+	http.Handle("/reset", enableCORS(http.HandlerFunc(resetScores))) 
+
+    // Serve static files in the static folder
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+
+
+    http.HandleFunc("/", indexHandler)
 	fmt.Println("Rock Paper Scissors server starting on port 8080")
 	http.ListenAndServe(":8080", nil)
+}
+
+
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./index.html")
 }
